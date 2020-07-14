@@ -2,6 +2,19 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
+exports.load = async (req, res, next) => {
+  try {
+    const user = await User.findAll({ where: { mobile: req.user.mobile } });
+    res.status(200).json({
+      status: true,
+      message: "User loaded successfully",
+      data: { user },
+    });
+  } catch (err) {
+    res.status(500).json({ status: false, message: err.message, data: {} });
+  }
+};
+
 exports.register = async (req, res, next) => {
   try {
     let { name, email, mobile, password } = req.body;
