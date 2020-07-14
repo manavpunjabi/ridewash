@@ -7,15 +7,9 @@
       >Add New Product</router-link
     >
     <div class="row">
-      <div class="col-lg-4 col-md-6 mb-3">
-        <div
-          v-for="product in products"
-          v-bind:key="product.id"
-          class="card-deck"
-        >
-          <div>
-            <ProductItem v-bind:product="product" />
-          </div>
+      <div v-for="product in products" v-bind:key="product.id">
+        <div class="card-group">
+          <ProductItem v-bind:product="product" />
         </div>
       </div>
     </div>
