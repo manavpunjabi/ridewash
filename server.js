@@ -9,6 +9,7 @@ dotenv.config({ path: "./config/config.env" });
 // Routes
 const auth = require("./routes/auth");
 const product = require("./routes/product");
+
 db.authenticate()
   .then(() => console.log("MySQL Connected"))
   .catch((err) => console.log("Error: " + err));

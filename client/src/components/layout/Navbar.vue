@@ -37,8 +37,8 @@
 export default {
   name: "Navbar",
   methods: {
-    async logout() {
-      await this.$emit("logout");
+    logout() {
+      this.$emit("logout");
     }
   }
 };

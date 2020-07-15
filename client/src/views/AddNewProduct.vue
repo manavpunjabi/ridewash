@@ -38,9 +38,7 @@
         placeholder="Product Code"
         required
       />
-      <button class="btn mt-3 btn-lg btn-primary btn-block" type="submit">
-        Add
-      </button>
+      <button class="btn mt-3 btn-lg btn-primary btn-block" type="submit">Add</button>
     </form>
   </div>
 </template>
@@ -85,8 +83,8 @@ export default {
       }
     }
   },
-  async created() {
-    await this.$emit("authenticate");
+  created() {
+    this.$emit("authenticate");
   }
 };
 </script>

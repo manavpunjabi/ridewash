@@ -36,13 +36,13 @@ export default {
         console.error(err);
       }
     },
-    async authenticate() {
+    authenticate() {
       if (!this.user) {
         this.$router.push("/login");
       }
     },
-    async logout() {
-      await localStorage.removeItem("token");
+    logout() {
+      localStorage.removeItem("token");
       this.user = null;
       this.$router.push("/");
     }
