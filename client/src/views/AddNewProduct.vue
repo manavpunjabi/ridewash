@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import ridewash from "../apis/ridewash";
 export default {
   name: "AddNewProduct",
   data() {
@@ -70,11 +70,7 @@ export default {
         code: this.code
       });
       try {
-        const res = await axios.post(
-          "http://localhost:3333/product",
-          body,
-          config
-        );
+        const res = await ridewash.post("/product", body, config);
 
         this.$emit("addProduct", res.data.data.product);
         this.$router.push("/products");

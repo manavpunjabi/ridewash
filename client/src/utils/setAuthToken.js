@@ -1,10 +1,10 @@
-import axios from "axios";
+import ridewash from "../apis/ridewash";
 
 const setAuthToken = token => {
   if (token) {
-    axios.defaults.headers.common["x-auth-token"] = token;
+    ridewash.defaults.headers.common["x-auth-token"] = token;
   } else {
-    delete axios.defaults.headers.common["x-auth-token"];
+    delete ridewash.defaults.headers.common["x-auth-token"];
   }
 };
 

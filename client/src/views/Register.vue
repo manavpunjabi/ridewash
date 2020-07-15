@@ -40,15 +40,13 @@
         placeholder="Password"
         required
       />
-      <button class="btn mt-3 btn-lg btn-primary btn-block" type="submit">
-        Register
-      </button>
+      <button class="btn mt-3 btn-lg btn-primary btn-block" type="submit">Register</button>
     </form>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import ridewash from "../apis/ridewash";
 export default {
   name: "Register",
   data() {
@@ -75,11 +73,7 @@ export default {
       });
 
       try {
-        const res = await axios.post(
-          "http://localhost:3333/auth/register",
-          body,
-          config
-        );
+        const res = await ridewash.post("/auth/register", body, config);
         localStorage.setItem("token", res.data.data.token);
         this.$emit("load-user");
         this.$router.push("products");

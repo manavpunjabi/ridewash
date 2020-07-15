@@ -12,7 +12,7 @@
 <script>
 import Navbar from "./components/layout/Navbar";
 import setAuthToken from "./utils/setAuthToken";
-import axios from "axios";
+import ridewash from "./apis/ridewash";
 export default {
   name: "app",
   components: {
@@ -29,7 +29,7 @@ export default {
         setAuthToken(localStorage.token);
       }
       try {
-        const res = await axios.get("http://localhost:3333/auth");
+        const res = await ridewash.get("/auth");
         this.user = res.data.data.user[0];
         this.$router.push("/products");
       } catch (err) {

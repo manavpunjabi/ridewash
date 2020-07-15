@@ -4,8 +4,7 @@
       v-on:add-product="addProduct"
       to="/products/add"
       class="btn btn-primary float-right"
-      >Add New Product</router-link
-    >
+    >Add New Product</router-link>
     <div class="row">
       <div v-for="product in products" v-bind:key="product.id">
         <div class="card-group">
@@ -17,7 +16,7 @@
 </template>
 
 <script>
-import axios from "axios";
+import ridewash from "../apis/ridewash";
 import ProductItem from "./ProductItem";
 export default {
   name: "Products",
@@ -36,7 +35,7 @@ export default {
   },
   async created() {
     await this.$emit("authenticate");
-    const res = await axios.get("http://localhost:3333/product");
+    const res = await ridewash.get("/product");
     this.products = res.data.data.products;
   }
 };

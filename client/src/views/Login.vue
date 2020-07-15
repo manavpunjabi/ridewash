@@ -22,15 +22,13 @@
         placeholder="Password"
         required
       />
-      <button class="btn mt-3 btn-lg btn-primary btn-block" type="submit">
-        Login
-      </button>
+      <button class="btn mt-3 btn-lg btn-primary btn-block" type="submit">Login</button>
     </form>
   </div>
 </template>
 
 <script>
-import axios from "axios";
+import ridewash from "../apis/ridewash";
 export default {
   name: "Login",
   data() {
@@ -53,11 +51,7 @@ export default {
       });
 
       try {
-        const res = await axios.post(
-          "http://localhost:3333/auth/login",
-          body,
-          config
-        );
+        const res = await ridewash.post("/auth/login", body, config);
         localStorage.setItem("token", res.data.data.token);
         this.$emit("load-user");
         this.$router.push("products");
