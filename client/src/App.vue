@@ -37,7 +37,7 @@ export default {
       }
     },
     authenticate() {
-      if (!this.user) {
+      if (this.user === null) {
         this.$router.push("/login");
       }
     },

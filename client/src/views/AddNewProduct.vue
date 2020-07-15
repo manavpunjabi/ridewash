@@ -71,7 +71,6 @@ export default {
       });
       try {
         const res = await ridewash.post("/product", body, config);
-
         this.$emit("addProduct", res.data.data.product);
         this.$router.push("/products");
       } catch (err) {
