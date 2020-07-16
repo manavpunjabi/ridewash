@@ -41,7 +41,7 @@ export default {
       }
     },
     authenticate() {
-      if (this.user === null) {
+      if (!this.isLoggedIn) {
         this.$router.push("/login");
       }
     },

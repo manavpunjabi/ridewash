@@ -81,9 +81,6 @@ export default {
         console.error(err);
       }
     }
-  },
-  created() {
-    this.$emit("load-user");
   }
 };
 </script>

@@ -13,7 +13,7 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto" v-if="isLoggedIn===true">
+      <ul class="navbar-nav ml-auto" v-if="isLoggedIn">
         <li class="nav-item">
           <router-link class="nav-link" to="/products">Products</router-link>
         </li>
