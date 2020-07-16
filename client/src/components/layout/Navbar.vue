@@ -13,20 +13,23 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ml-auto">
+      <ul class="navbar-nav ml-auto" v-if="isLoggedIn===true">
         <li class="nav-item">
           <router-link class="nav-link" to="/products">Products</router-link>
         </li>
-
         <li class="nav-item">
-          <router-link class="nav-link" to="/login">Login</router-link>
-        </li>
-
-        <li class="nav-item">
-          <router-link class="nav-link" to="/register">Register</router-link>
+          <span class="nav-link">Welcome {{user.name}}</span>
         </li>
         <li class="nav-item">
           <a v-on:click="logout" class="nav-link">Logout</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto" v-else>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/login">Login</router-link>
+        </li>
+        <li class="nav-item">
+          <router-link class="nav-link" to="/register">Register</router-link>
         </li>
       </ul>
     </div>
@@ -36,6 +39,7 @@
 <script>
 export default {
   name: "Navbar",
+  props: ["user", "isLoggedIn"],
   methods: {
     logout() {
       this.$emit("logout");

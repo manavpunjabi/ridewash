@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div>
-      <Navbar v-on:logout="logout" />
+      <Navbar v-on:logout="logout" v-bind:user="user" v-bind:isLoggedIn="isLoggedIn" />
     </div>
     <div class="container">
       <router-view v-on:load-user="loaduser" v-on:authenticate="authenticate" />
@@ -20,7 +20,8 @@ export default {
   },
   data() {
     return {
-      user: null
+      user: null,
+      isLoggedIn: false
     };
   },
   methods: {
@@ -31,9 +32,12 @@ export default {
       try {
         const res = await ridewash.get("/auth");
         this.user = res.data.data.user[0];
+        this.isLoggedIn = true;
         this.$router.push("/products");
       } catch (err) {
         console.error(err);
+        this.$router.push("/login");
+        this.isLoggedIn = false;
       }
     },
     authenticate() {
@@ -44,6 +48,7 @@ export default {
     logout() {
       localStorage.removeItem("token");
       this.user = null;
+      this.isLoggedIn = false;
       this.$router.push("/");
     }
   }
